@@ -2,26 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  // Properties
-  title = 'LocalSpark - Dating App';
-  users: any; 
+	// Properties
+	title: string = 'LocalSpark - Dating App';
+	users: any;
 
-  // Constructor
-  constructor(private http: HttpClient) {}
-  ngOnInit(): void {
-    this.http.get('https://locahost:5001/api/users').subscribe({
-      next: response => this.users = response,
-      error: error => console.log(error),
-      complete: () => console.log('Request has completed')
-    })
-  }
+	// Constructor
+	constructor(private http: HttpClient) {}
 
-  // Methods
+	ngOnInit(): void {
+		this.http.get('https://localhost:5001/api/users').subscribe({
+			next: (response) => (this.users = response),
+			error: (error) => console.log(error),
+			complete: () => console.log('Request has completed'),
+		});
+	}
 
-  
+	// Methods
 }
